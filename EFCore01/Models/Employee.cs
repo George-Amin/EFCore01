@@ -27,7 +27,7 @@ namespace EFCore01.Models
 
 
         // value type allow null
-        // will map to int
+        // will map to int.
         public int Age { get; set; } 
         #endregion
     }
