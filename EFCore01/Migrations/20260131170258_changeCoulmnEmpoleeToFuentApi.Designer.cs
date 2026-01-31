@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore01.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20260122114944_CreateEmployeeTable")]
-    partial class CreateEmployeeTable
+    [Migration("20260131170258_changeCoulmnEmpoleeToFuentApi")]
+    partial class changeCoulmnEmpoleeToFuentApi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,22 +26,40 @@ namespace EFCore01.Migrations
 
             modelBuilder.Entity("EFCore01.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EmpId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmpId"));
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmpName")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar")
+                        .HasColumnName("EmploeeName");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("Decimal(10,2)")
+                        .HasColumnName("EmployeeSalary");
+
+                    b.HasKey("EmpId");
 
                     b.ToTable("Employees");
                 });

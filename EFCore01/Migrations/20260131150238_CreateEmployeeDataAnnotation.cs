@@ -5,7 +5,7 @@
 namespace EFCore01.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateEmployeeTable : Migration
+    public partial class CreateEmployeeDataAnnotation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +16,12 @@ namespace EFCore01.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false)
+                    EmployeeName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    EmployeeSalary = table.Column<decimal>(type: "Decimal(10,2)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
